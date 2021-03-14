@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import TodoForm from './Todo/TodoForm.jsx';
+// import Todo from './Todo/Todo.jsx'
+import TodoItem from './Todo/TodoItem'
+
 
 function App() {
+  const [task, setTask] = useState([])
+
+  const addtask = (userInput) => {
+    if (userInput) {
+      const newItem = {
+        taskk: userInput,
+      }
+      setTask([...task,newItem])
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header>Список задач:{task.length}</header>
+      <TodoForm addtask = {addtask} />
+      {task.map(() => {
+        return (
+          <TodoItem
+            task = {task}
+          />
+        )
+      })}
     </div>
   );
 }
