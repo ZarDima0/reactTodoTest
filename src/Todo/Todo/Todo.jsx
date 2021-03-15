@@ -1,8 +1,10 @@
+import './todo.css'
+
 function Todo({ task }) {
-    return (
-      <div className="todo">
-        {task.task}
-      </div>
-    );
-  };
-  export default Todo;
+  return (
+    <div>
+      {task.task}
+    </div>
+  );
+};
+export default Todo;

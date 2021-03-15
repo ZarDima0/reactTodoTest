@@ -1,0 +1,12 @@
+.wrapper_form {
+    display: flex;
+    padding: 1vh;
+    background-color: white;
+}
+button {
+    background-color: #2174FE;
+    color: white;
+}
+form {
+    display: block;
+}
