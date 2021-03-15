@@ -1,33 +1,26 @@
 import { useState } from 'react';
 import './App.css';
-import TodoForm from './Todo/TodoForm.jsx';
-// import Todo from './Todo/Todo.jsx'
-import TodoItem from './Todo/TodoItem'
+import Todo from './Todo/Todo/Todo.jsx'
+import TodoForm from './Todo/TodoForm/TodoForm.jsx'
 
 
 function App() {
-  const [task, setTask] = useState([])
-
-  const addtask = (userInput) => {
-    if (userInput) {
-      const newItem = {
-        taskk: userInput,
-      }
-      setTask([...task,newItem])
-    }
+  const [count, setCount] = useState([
+    { task: '' }
+  ])
+  const addTodo = (task) => {
+    const newTask = [...count,{task}]
+    setCount(newTask)
   }
-
   return (
     <div className="App">
-      <header>Список задач:{task.length}</header>
-      <TodoForm addtask = {addtask} />
-      {task.map(() => {
-        return (
-          <TodoItem
-            task = {task}
-          />
-        )
-      })}
+      <div className= 'list'>
+        <TodoForm addTodo = {addTodo}  />
+        {count.map(task => (<Todo
+          task={task}
+        />
+        ))}
+      </div>
     </div>
   );
 }
